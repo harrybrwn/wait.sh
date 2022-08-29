@@ -31,9 +31,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and Push
         run: |
-          docker buildx build .    \
-            --push                 \
-            -f Dockerfile          \
-            --platform linux/amd64 \
-            --platform linux/arm64 \
+          docker buildx build .            \
+            --push                         \
+            --tag harrybrwn/wait.sh:latest \
+            --file Dockerfile              \
+            --platform linux/amd64         \
+            --platform linux/arm64         \
             --platform linux/arm/v7
